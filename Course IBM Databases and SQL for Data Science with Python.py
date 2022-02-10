@@ -17,7 +17,7 @@ from datetime import datetime
 #==============================================================================
 # It sets the working directory.
 #==============================================================================
-WORKING_DIRECTORY = """C:\\Users\\01278575677\\OneDrive - Receita Federal do Brasil\\3. Cursos e pós graduações\\3.39. Coursera IBM Data Engineering Professional Certificate"""
+WORKING_DIRECTORY = """C:\\"""
 os.chdir(WORKING_DIRECTORY)
 os.getcwd()
 
