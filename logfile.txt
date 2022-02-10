@@ -1,0 +1,130 @@
+2022-Feb-10-18:55:15	================================================================================
+Problem 1: Find the total number of crimes recorded in the CRIME table.
+SQL: 
+
+select count(1) as qt_crime
+from   df_crime;
+
+Total numbers in the CRIME table is: 1000
+
+2022-Feb-10-18:55:15	================================================================================
+Problem 2: List community areas with per capita income less than 11000.
+SQL: 
+
+select ca
+   ,   community_area_name
+from   df_indicator
+where  per_capita_income_ < 11000;
+
+Community areas with per capita income less than 11000:
+      ca community_area_name
+0  26.0  West Garfield Park
+1  30.0      South Lawndale
+2  37.0         Fuller Park
+3  54.0           Riverdale
+
+2022-Feb-10-18:55:15	================================================================================
+Problem 3: List all case numbers for crimes involving minors(children are 
+# not considered minors for the purposes of crime analysis)
+SQL: 
+
+select case_number
+   ,   primary_type
+   ,   description
+from   df_crime
+where  description like '%MINOR%';
+
+Case numbers for crimes involving minors:
+   case_number primary_type                                        description
+0    JF131913      BATTERY  PROTECTED EMPLOYEE - HANDS, FISTS, FEET, NO / ...
+1    JF131498      BATTERY  AGGRAVATED P.O. - HANDS, FISTS, FEET, NO / MIN...
+2    JF131460      BATTERY  AGGRAVATED P.O. - HANDS, FISTS, FEET, NO / MIN...
+3    JF131067      BATTERY  AGGRAVATED - HANDS, FISTS, FEET, NO / MINOR IN...
+4    JF132642      BATTERY  AGGRAVATED - HANDS, FISTS, FEET, NO / MINOR IN...
+5    JF130845      BATTERY  PROTECTED EMPLOYEE - HANDS, FISTS, FEET, NO / ...
+6    JF130755      ASSAULT  PROTECTED EMPLOYEE - HANDS, FISTS, FEET, NO / ...
+7    JF130630      ASSAULT  PROTECTED EMPLOYEE - HANDS, FISTS, FEET, NO / ...
+
+2022-Feb-10-18:55:15	================================================================================
+Problem 4: List all kidnapping crimes involving a child.
+SQL: 
+
+select case_number
+   ,   primary_type
+   ,   description
+from   df_crime
+where  description like '%CHILD%';
+
+There were not any kidnapping crimes involving a child:
+   case_number  ...                               description
+0    JF133066  ...                               CHILD ABUSE
+1    JF131207  ...        ENDANGERING LIFE / HEALTH OF CHILD
+2    JF131238  ...                     AGGRAVATED OF A CHILD
+3    JF130202  ...  SEXUAL ASSAULT OF CHILD BY FAMILY MEMBER
+
+[4 rows x 3 columns]
+
+2022-Feb-10-18:55:15	================================================================================
+Problem 5: What kind of crimes were recorded at schools.
+SQL: 
+
+select   t1.primary_type
+   ,     count(distinct case_number) as qt_crime_at_school
+from     df_crime  t1
+join     df_school t2 on t1.community_area = t2.community_area_number
+group by t1.primary_type
+order by qt_crime_at_school desc;
+
+Type and quantity of crimes recorded at schools:
+                         primary_type  qt_crime_at_school
+0                            BATTERY                 214
+1                              THEFT                 205
+2                    CRIMINAL DAMAGE                 102
+3                            ASSAULT                  90
+4                      OTHER OFFENSE                  82
+5                            ROBBERY                  58
+6                 DECEPTIVE PRACTICE                  52
+7                MOTOR VEHICLE THEFT                  51
+8                  WEAPONS VIOLATION                  39
+9                           BURGLARY                  30
+10                         NARCOTICS                  25
+11                 CRIMINAL TRESPASS                  22
+12        OFFENSE INVOLVING CHILDREN                   6
+13           CRIMINAL SEXUAL ASSAULT                   6
+14                          HOMICIDE                   5
+15                       SEX OFFENSE                   3
+16            PUBLIC PEACE VIOLATION                   3
+17  INTERFERENCE WITH PUBLIC OFFICER                   3
+18                          STALKING                   2
+19                             ARSON                   1
+
+2022-Feb-10-18:55:15	================================================================================
+Problem 6: List the average safety score for all types of schools.
+SQL: 
+
+select   avg(safety_score) as avg_safety_score
+from     df_school;
+
+Average safety score for all types of schools:
+    avg_safety_score
+0         49.504873
+
+2022-Feb-10-18:55:15	================================================================================
+Problem 7: List 5 community areas with highest % of households below poverty.
+SQL: 
+
+select   community_area_name
+    ,    percent_households_below_poverty
+from     df_indicator
+order by percent_households_below_poverty desc
+limit 5;
+
+Top 5 community areas with highest % of households below poverty:
+   community_area_name  percent_households_below_poverty
+0           Riverdale                              56.5
+1         Fuller Park                              51.2
+2           Englewood                              46.6
+3      North Lawndale                              43.1
+4  East Garfield Park                              42.4
+
+
