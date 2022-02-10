@@ -1,0 +1,13 @@
+2022-Feb-10-20:00:12	================================================================================
+Problem 8: Which community area(number) is most crime prone.
+SQL: 
+
+select    t1.community_area
+   ,      count(distinct case_number) as qt_crime
+from      df_crime     t1
+group by  t1.community_area
+order by  qt_crime desc
+limit 1;
+
+Community area(number) is most crime prone: 25
+

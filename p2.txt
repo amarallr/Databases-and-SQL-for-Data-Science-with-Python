@@ -1,0 +1,16 @@
+2022-Feb-10-20:00:12	================================================================================
+Problem 2: List community areas with per capita income less than 11000.
+SQL: 
+
+select ca
+   ,   community_area_name
+from   df_indicator
+where  per_capita_income_ < 11000;
+
+Community areas with per capita income less than 11000:
+      ca community_area_name
+0  26.0  West Garfield Park
+1  30.0      South Lawndale
+2  37.0         Fuller Park
+3  54.0           Riverdale
+

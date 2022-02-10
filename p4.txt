@@ -1,0 +1,19 @@
+2022-Feb-10-20:00:12	================================================================================
+Problem 4: List all kidnapping crimes involving a child.
+SQL: 
+
+select case_number
+   ,   primary_type
+   ,   description
+from   df_crime
+where  description like '%CHILD%';
+
+There were not any kidnapping crimes involving a child:
+   case_number  ...                               description
+0    JF133066  ...                               CHILD ABUSE
+1    JF131207  ...        ENDANGERING LIFE / HEALTH OF CHILD
+2    JF131238  ...                     AGGRAVATED OF A CHILD
+3    JF130202  ...  SEXUAL ASSAULT OF CHILD BY FAMILY MEMBER
+
+[4 rows x 3 columns]
+

@@ -24,8 +24,10 @@ os.getcwd()
 #==============================================================================
 # It downloads messages to log file.
 #==============================================================================
-def log(message):
-    logfile    = 'logfile.txt'             # all event logs will be stored in this file
+def log(message, logfile = 'logfile.txt'):
+
+    # all event logs will be stored in this "logfile"
+                 
     timestamp_format = '%Y-%h-%d-%H:%M:%S' # Year-Monthname-Day-Hour-Minute-Second
     now = datetime.now()                   # get current timestamp
     timestamp = now.strftime(timestamp_format)
@@ -163,7 +165,8 @@ from   df_crime;
 '''
 r = pysqldf(st)
 
-log(80*'=' + t + '\nSQL: ' + st + '\nTotal numbers in the CRIME table is: ' + str(int(r['qt_crime'])) + '\n')
+log(80*'=' + t + '\nSQL: ' + st + '\nTotal numbers in the CRIME table is: ' + str(int(r['qt_crime'])) + '\n'
+    , logfile='p1.txt')
 
 #------------------------------------------------------------------------------
 # Problem 2: List community areas with per capita income less than 11000.
@@ -178,7 +181,8 @@ where  per_capita_income_ < 11000;
 r = pysqldf(st)
 r = str((r))
 
-log(80*'=' + t + '\nSQL: ' + st + '\nCommunity areas with per capita income less than 11000:\n ' + r + '\n')
+log(80*'=' + t + '\nSQL: ' + st + '\nCommunity areas with per capita income less than 11000:\n ' + r + '\n'
+        , logfile='p2.txt')
 
 #------------------------------------------------------------------------------
 #Problem 3: List all case numbers for crimes  involving minors (children are 
@@ -199,7 +203,8 @@ r
 
 r = str((r))
 
-log(80*'=' + t + '\nSQL: ' + st + '\nCase numbers for crimes involving minors:\n ' + r + '\n')
+log(80*'=' + t + '\nSQL: ' + st + '\nCase numbers for crimes involving minors:\n ' + r + '\n'
+        , logfile='p3.txt')
 
 
 #------------------------------------------------------------------------------
@@ -218,7 +223,9 @@ r = pysqldf(st)
 r
 r = str((r))
 
-log(80*'=' + t + '\nSQL: ' + st + '\nThere were not any kidnapping crimes involving a child:\n ' + r + '\n')
+log(80*'=' + t + '\nSQL: ' + st + '\nThere were not any kidnapping crimes involving a child:\n ' + r + '\n'
+        , logfile='p4.txt')
+    
 
 #------------------------------------------------------------------------------
 #Problem 5: What kind of crimes were recorded at schools.
@@ -238,7 +245,9 @@ r
 
 r = str((r))
 
-log(80*'=' + t + '\nSQL: ' + st + '\nType and quantity of crimes recorded at schools:\n ' + r + '\n')
+log(80*'=' + t + '\nSQL: ' + st + '\nType and quantity of crimes recorded at schools:\n ' + r + '\n'
+        , logfile='p5.txt')
+   
 
 #------------------------------------------------------------------------------
 #Problem 6: List the average safety score for all types of schools.
@@ -254,7 +263,9 @@ r
 
 r = str((r))
 
-log(80*'=' + t + '\nSQL: ' + st + '\nAverage safety score for all types of schools:\n ' + r + '\n')
+log(80*'=' + t + '\nSQL: ' + st + '\nAverage safety score for all types of schools:\n ' + r + '\n'
+        , logfile='p6.txt')
+
 
 #------------------------------------------------------------------------------
 #Problem 7: List 5 community areas with highest % of households below poverty 
@@ -274,8 +285,8 @@ r
 
 r = str((r))
 
-log(80*'=' + t + '\nSQL: ' + st + '\nTop 5 community areas with highest % of households below poverty:\n ' + r + '\n')
-
+log(80*'=' + t + '\nSQL: ' + st + '\nTop 5 community areas with highest % of households below poverty:\n ' + r + '\n'
+        , logfile='p7.txt')
 
 #------------------------------------------------------------------------------
 #Problem 8: Which community area(number) is most crime prone.
@@ -293,7 +304,8 @@ limit 1;
 r = pysqldf(st)
 r
 
-log(80*'=' + t + '\nSQL: ' + st + '\nCommunity area(number) is most crime prone: ' + str(r['community_area'][0]) + '\n')
+log(80*'=' + t + '\nSQL: ' + st + '\nCommunity area(number) is most crime prone: ' + str(r['community_area'][0]) + '\n'
+        , logfile='p8.txt')
 
 #------------------------------------------------------------------------------
 #Problem 9: Use a sub-query to find the name of the community area with highest
@@ -314,7 +326,8 @@ where    t1.hardship_index = (
 r = pysqldf(st)
 r
 
-log(80*'=' + t + '\nSQL: ' + st + '\nName of the community area with highest hardship index: ' + str(r['community_area_name'][0]) + '(' + str(r['hardship_index'][0]) + ')' + '\n')
+log(80*'=' + t + '\nSQL: ' + st + '\nName of the community area with highest hardship index: ' + str(r['community_area_name'][0]) + '(' + str(r['hardship_index'][0]) + ')' + '\n'
+        , logfile='p9.txt')
 
 
 #------------------------------------------------------------------------------
@@ -339,6 +352,7 @@ order by  qt_crime desc
 r = pysqldf(st)
 r
 
-log(80*'=' + t + '\nSQL: ' + st + '\nCommunity Area Name with most number of crimes: ' + str(r['community_area_name'][0]) + '(' + str(r['qt_crime'][0]) + ')' + '\n')
+log(80*'=' + t + '\nSQL: ' + st + '\nCommunity Area Name with most number of crimes: ' + str(r['community_area_name'][0]) + '(' + str(r['qt_crime'][0]) + ')' + '\n'
+        , logfile='p10.txt')
 
 

@@ -1,0 +1,14 @@
+2022-Feb-10-20:00:12	================================================================================
+Problem 9: Use a sub-query to find the name of the community area with highest hardship index.
+SQL: 
+
+select   t1.community_area_name
+   ,     t1.hardship_index
+from     df_indicator t1
+where    t1.hardship_index = (
+            select    max(t2.hardship_index)
+            from      df_indicator t2
+         );    
+
+Name of the community area with highest hardship index: Riverdale(98.0)
+

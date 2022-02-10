@@ -1,0 +1,11 @@
+2022-Feb-10-20:00:12	================================================================================
+Problem 6: List the average safety score for all types of schools.
+SQL: 
+
+select   avg(safety_score) as avg_safety_score
+from     df_school;
+
+Average safety score for all types of schools:
+    avg_safety_score
+0         49.504873
+

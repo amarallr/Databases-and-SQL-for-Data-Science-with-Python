@@ -1,0 +1,17 @@
+2022-Feb-10-20:00:12	================================================================================
+Problem 10: Use a sub-query to determine the Community Area Name with most number of crimes
+SQL: 
+
+select    cast(t1.ca as integer) as community_area_code
+   ,      t1.community_area_name
+   ,      count(distinct case_number) as qt_crime
+from      df_indicator     t1
+left join df_crime         t2 on cast(t1.ca as integer) = t2.community_area
+where     t1.ca not in ('nan')
+group by  community_area_code
+   ,      t1.community_area_name
+order by  qt_crime desc
+;    
+
+Community Area Name with most number of crimes: Austin(54)
+

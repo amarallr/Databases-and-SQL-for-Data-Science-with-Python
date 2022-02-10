@@ -1,0 +1,18 @@
+2022-Feb-10-20:00:12	================================================================================
+Problem 7: List 5 community areas with highest % of households below poverty.
+SQL: 
+
+select   community_area_name
+    ,    percent_households_below_poverty
+from     df_indicator
+order by percent_households_below_poverty desc
+limit 5;
+
+Top 5 community areas with highest % of households below poverty:
+   community_area_name  percent_households_below_poverty
+0           Riverdale                              56.5
+1         Fuller Park                              51.2
+2           Englewood                              46.6
+3      North Lawndale                              43.1
+4  East Garfield Park                              42.4
+

@@ -1,0 +1,34 @@
+2022-Feb-10-20:00:12	================================================================================
+Problem 5: What kind of crimes were recorded at schools.
+SQL: 
+
+select   t1.primary_type
+   ,     count(distinct case_number) as qt_crime_at_school
+from     df_crime  t1
+join     df_school t2 on t1.community_area = t2.community_area_number
+group by t1.primary_type
+order by qt_crime_at_school desc;
+
+Type and quantity of crimes recorded at schools:
+                         primary_type  qt_crime_at_school
+0                            BATTERY                 216
+1                              THEFT                 205
+2                    CRIMINAL DAMAGE                 101
+3                            ASSAULT                  90
+4                      OTHER OFFENSE                  82
+5                            ROBBERY                  58
+6                 DECEPTIVE PRACTICE                  52
+7                MOTOR VEHICLE THEFT                  50
+8                  WEAPONS VIOLATION                  39
+9                           BURGLARY                  30
+10                         NARCOTICS                  25
+11                 CRIMINAL TRESPASS                  22
+12        OFFENSE INVOLVING CHILDREN                   6
+13           CRIMINAL SEXUAL ASSAULT                   6
+14                          HOMICIDE                   5
+15                       SEX OFFENSE                   3
+16            PUBLIC PEACE VIOLATION                   3
+17  INTERFERENCE WITH PUBLIC OFFICER                   3
+18                          STALKING                   2
+19                             ARSON                   1
+
