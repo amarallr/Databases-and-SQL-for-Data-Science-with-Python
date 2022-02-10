@@ -1,12 +1,3 @@
-2022-Feb-10-19:57:15	================================================================================
-Problem 1: Find the total number of crimes recorded in the CRIME table.
-SQL: 
-
-select count(1) as qt_crime
-from   df_crime;
-
-Total numbers in the CRIME table is: 1000
-
 2022-Feb-10-20:00:12	================================================================================
 Problem 1: Find the total number of crimes recorded in the CRIME table.
 SQL: 
